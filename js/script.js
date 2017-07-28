@@ -1,5 +1,5 @@
       
-var accessToken = "d5068bf59f2b4a808386fa236bf4a2ee",
+var accessToken = "071ec91a234c452a90d9ef56f872eb0c",
   baseUrl = "https://api.api.ai/v1/",
   $speechInput,
   $recBtn,
