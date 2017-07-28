@@ -17,7 +17,7 @@ var modalVid;
 var modal3, modal4;
 //var modal5, modal6, modal7, modal8;
 var msg;
-var check = false;
+//var check = false;
 
 $(document).ready(function() {
 
@@ -260,36 +260,36 @@ function prepareResponse(val) {
   if (text.indexOf(subString1) != -1) {
     console.log("display found ");
     findImageURL.call(this,text);
-    check = true;
-    console.log(check);
+    //check = true;
+    //console.log(check);
   } else {
     console.log("display not found ");
-    check = false;
-    console.log(check);
+    //check = false;
+    //console.log(check);
   };
 
   //VIDEO
   if (text.indexOf(subString2) != -1) {
     console.log("video found");
     findVideoURL.call(this,text);
-    check = true;
-    console.log(check);
+    //check = true;
+    //console.log(check);
   } else {
     console.log("video not found ");
-    check = false;
-    console.log(check);
+    //check = false;
+    //console.log(check);
   };
 
-  //POWERPOINT 1
+  //POWERPOINT
   if (text.indexOf(subString3) != -1) {
     console.log("powerpoint found");
     showPpt.call(this,text);
-    check = true;
-    console.log(check);
+    //check = true;
+    //console.log(check);
   } else {
     console.log("ppt not found ");
-    check = false;
-    console.log(check);
+    //check = false;
+    //console.log(check);
   };
 
   respond(spokenResponse);
@@ -305,13 +305,14 @@ function respond(val) {
     val = messageSorry;
   }
   if (val !== messageRecording) {
-    console.log(check);
+    /*console.log(check);
     if(check === true){
           msg.text = "Here you go sir"
     };
     if(check === false){
           msg.text = val;
-    };
+    };*/
+    msg.text = val;
     window.speechSynthesis.speak(msg);
     check = false;
   };
