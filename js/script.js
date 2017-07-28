@@ -251,7 +251,9 @@ function prepareResponse(val) {
 
   var subString1 = "displaying";
   var subString2 = "loading";
-  var subString3 = "showing";
+  var subString3 = "here";
+  var subString4 = "welcome";
+  var subString5 = "that's";
 
   var text = spokenResponse.toLowerCase();
   console.log(" TEXT TO CHECK : " +text);
@@ -281,7 +283,7 @@ function prepareResponse(val) {
   };
 
   //POWERPOINT
-  if (text.indexOf(subString3) != -1) {
+  if (text.indexOf(subString3) != -1 || text.indexOf(subString4) != -1 || text.indexOf(subString5)) {
     console.log("powerpoint found");
     showPpt.call(this,text);
     //check = true;
