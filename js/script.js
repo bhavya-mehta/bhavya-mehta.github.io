@@ -261,8 +261,11 @@ function prepareResponse(val) {
     console.log("display found ");
     findImageURL.call(this,text);
     check = true;
+    console.log(check);
   } else {
     console.log("display not found ");
+    check = false;
+    console.log(check);
   };
 
   //VIDEO
@@ -270,8 +273,11 @@ function prepareResponse(val) {
     console.log("video found");
     findVideoURL.call(this,text);
     check = true;
+    console.log(check);
   } else {
     console.log("video not found ");
+    check = false;
+    console.log(check);
   };
 
   //POWERPOINT 1
@@ -279,8 +285,11 @@ function prepareResponse(val) {
     console.log("powerpoint found");
     showPpt.call(this,text);
     check = true;
+    console.log(check);
   } else {
     console.log("ppt not found ");
+    check = false;
+    console.log(check);
   };
 
   respond(spokenResponse);
@@ -296,9 +305,11 @@ function respond(val) {
     val = messageSorry;
   }
   if (val !== messageRecording) {
-    if(check = true){
+    console.log(check);
+    if(check === true){
           msg.text = "Here you go sir"
-    } else {
+    };
+    if(check === false){
           msg.text = val;
     };
     window.speechSynthesis.speak(msg);
