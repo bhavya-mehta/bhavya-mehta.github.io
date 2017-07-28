@@ -1,14 +1,14 @@
       
 var accessToken = "071ec91a234c452a90d9ef56f872eb0c",
-  baseUrl = "https://api.api.ai/v1/",
-  $speechInput,
-  $recBtn,
-  recognition,
-  //Listening reveal
-  messageRecording = "<div class='listening'><span>Listening</span><img src='images/wave.gif'></div>",
-  messageCouldntHear = "I couldn't hear you, could you say that again sir?",
-  messageInternalError = "Oh no, there has been an internal server error",
-  messageSorry = "I'm sorry, I don't have the answer to that yet sir.";
+      baseUrl = "https://api.api.ai/v1/",
+      $speechInput,
+      $recBtn,
+      recognition,
+      //Listening reveal
+      messageRecording = "<div class='listening'><span>Listening</span><img src='images/wave.gif'></div>",
+      messageCouldntHear = "I couldn't hear you, could you say that again sir?",
+      messageInternalError = "Oh no, there has been an internal server error",
+      messageSorry = "I'm sorry, I don't have the answer to that yet sir.";
 var modal;
 var modalImg;
 var captionText;
@@ -21,147 +21,147 @@ var check = false;
 
 $(document).ready(function() {
 
-  /*** FUNCTION TO DISPLAY APPROPRIATE IMAGE ON THE MODAL ***/
-  modal = document.getElementById('myModal');
-  modal2 = document.getElementById('myModal2');
-  modal3 = document.getElementById('myModal3');
-  modal4 = document.getElementById('myModal4');
-  //modal5 = document.getElementById('myModal5');
-  //modal6 = document.getElementById('myModal6');
-  //modal7 = document.getElementById('myModal7');
-  //modal8 = document.getElementById('myModal8');  
-  modalImg = document.getElementById("img01"); /** getting id of the modal Image **/
-  modalVid = document.getElementById("vid01"); /** getting id of the modal Video **/
-  captionText = document.getElementById("caption"); /** to display the caption inside the modal **/
+      /*** FUNCTION TO DISPLAY APPROPRIATE IMAGE ON THE MODAL ***/
+      modal = document.getElementById('myModal');
+      modal2 = document.getElementById('myModal2');
+      modal3 = document.getElementById('myModal3');
+      modal4 = document.getElementById('myModal4');
+      //modal5 = document.getElementById('myModal5');
+      //modal6 = document.getElementById('myModal6');
+      //modal7 = document.getElementById('myModal7');
+      //modal8 = document.getElementById('myModal8');  
+      modalImg = document.getElementById("img01"); /** getting id of the modal Image **/
+      modalVid = document.getElementById("vid01"); /** getting id of the modal Video **/
+      captionText = document.getElementById("caption"); /** to display the caption inside the modal **/
 
-  //PREPARE VOICE
-  msg = new SpeechSynthesisUtterance();
-  msg.default;
-  msg.URI = 'native';
-  msg.lang = "en-US";
-  msg.rate = 0.9;
+      //PREPARE VOICE
+      msg = new SpeechSynthesisUtterance();
+      msg.default;
+      msg.URI = 'native';
+      msg.lang = "en-US";
+      msg.rate = 0.9;
 
-  $speechInput = $("#speech");
-  $recBtn = $("#rec");
+      $speechInput = $("#speech");
+      $recBtn = $("#rec");
 
-  $speechInput.keypress(function(event) {
-    if (event.which == 13) {
-      event.preventDefault();
-      send();
-  }
-  });
-  $(window).keydown(function(event) {
-    if(event.which == 190 || event.which == 9) {
-      event.preventDefault();	
-      switchRecognition();
-      };
-  });
-  $(".debug__btn").on("click", function() {
-  $(this).next().toggleClass("is-active");
-  return false;
-  });
+      $speechInput.keypress(function(event) {
+            if (event.which == 13) {
+                  event.preventDefault();
+                  send();
+            }
+      });
+      $(window).keydown(function(event) {
+            if(event.which == 190 || event.which == 9) {
+                  event.preventDefault();	
+                  switchRecognition();
+            };
+      });
+      $(".debug__btn").on("click", function() {
+            $(this).next().toggleClass("is-active");
+            return false;
+      });
 
 });
 
 function findImageURL(text) {
 
-  console.log("TEXT IS : " + text);
-  var arr = text.split(" ");
-  console.log("A 0 " + arr[0]);
-  console.log("A 1 " + arr[1]);
-  console.log("A 2 " + arr[2]);
+      console.log("TEXT IS : " + text);
+      var arr = text.split(" ");
+      console.log("A 0 " + arr[0]);
+      console.log("A 1 " + arr[1]);
+      console.log("A 2 " + arr[2]);
 
-  var imageValue = arr[1]+arr[2];
-  console.log("IMAGE VALUE " + imageValue);
-  displayImage.call(this,imageValue);
+      var imageValue = arr[1]+arr[2];
+      console.log("IMAGE VALUE " + imageValue);
+      displayImage.call(this,imageValue);
 }
 
 /*** FUNCTION TO DISPLAY APPROPRIATE IMAGE ON THE MODAL ***/
 function displayImage(imageUrl) {
 
-  modal.style.display = "block";
-  console.log("CLICKED");
-  imageUrl+=".jpg";
-  modalImg.src = "images/"+imageUrl;
+      modal.style.display = "block";
+      console.log("CLICKED");
+      imageUrl+=".jpg";
+      modalImg.src = "images/"+imageUrl;
 }
 
 // When the user clicks on the clicker, close any modal
 window.onkeydown = function() { 
-  var keyCode = event.keyCode;
-  if (keyCode == 116 || keyCode == 27) {
-    event.preventDefault();
-    document.querySelector('video').src = "";
-    modal.style.display = "none";
-    modal2.style.display = "none";
-    modal3.style.display = "none";
-    modal4.style.display = "none";
-    //modal5.style.display = "none";
-    //modal6.style.display = "none";
-    //modal7.style.display = "none";
-    //modal8.style.display = "none";
-  }
-  if (keyCode == 33) {
-    document.getElementById('vid01').pause();
-  }
-  if (keyCode == 34) {
-    document.getElementById('vid01').play();
-  }
+      var keyCode = event.keyCode;
+      if (keyCode == 116 || keyCode == 27) {
+            event.preventDefault();
+            document.querySelector('video').src = "";
+            modal.style.display = "none";
+            modal2.style.display = "none";
+            modal3.style.display = "none";
+            modal4.style.display = "none";
+            //modal5.style.display = "none";
+            //modal6.style.display = "none";
+            //modal7.style.display = "none";
+            //modal8.style.display = "none";
+      }
+      if (keyCode == 33) {
+            document.getElementById('vid01').pause();
+      }
+      if (keyCode == 34) {
+            document.getElementById('vid01').play();
+      }
 }
 
 function findVideoURL(text) {
 
-  console.log("TEXT IS : " + text);
-  var arr = text.split(" ");
-  console.log("A 0 " + arr[0]);
-  console.log("A 1 " + arr[1]);
-  console.log("A 2 " + arr[2]);
+      console.log("TEXT IS : " + text);
+      var arr = text.split(" ");
+      console.log("A 0 " + arr[0]);
+      console.log("A 1 " + arr[1]);
+      console.log("A 2 " + arr[2]);
 
-  var videoValue = arr[1]+arr[2];
-  console.log("IMAGE VALUE " + videoValue);
-  displayVideo.call(this, videoValue);
+      var videoValue = arr[1]+arr[2];
+      console.log("IMAGE VALUE " + videoValue);
+      displayVideo.call(this, videoValue);
 }
 
 /*** FUNCTION TO DISPLAY APPROPRIATE IMAGE ON THE MODAL ***/
 function displayVideo(videoUrl) {
 
-  modal2.style.display = "block";
-  console.log("CLICKED again");
-  videoUrl+=".webm";
-  modalVid.src = "videos/"+videoUrl;
-  /** Video will play after three seconds **/
-  setTimeout(function() {
-  document.getElementById('vid01').play();
-  console.log("video played");
-  }, 3000) ;
+      modal2.style.display = "block";
+      console.log("CLICKED again");
+      videoUrl+=".webm";
+      modalVid.src = "videos/"+videoUrl;
+      /** Video will play after three seconds **/
+      setTimeout(function() {
+            document.getElementById('vid01').play();
+            console.log("video played");
+      }, 3000) ;
 }
 
 //POWERPOINT 1
 function showPpt(text) {
 
-  if(text == "showing the chatbot functions presentation sir"){
-  modal3.style.display = "block";
-  console.log("CLICKED again and again");
-  };
-  if(text == "showing the hardware powerpoint sir"){
-  modal4.style.display = "block";
-  console.log("CLICKED again and again");
-  };
-  /*if(text == ""){
-  modal5.style.display = "block";
-  console.log("CLICKED again and again");
-  };*/
-  /*if(text == ""){
-  modal6.style.display = "block";
-  console.log("CLICKED again and again");
-  };*/  
-  /*if(text == ""){
-  modal7.style.display = "block";
-  console.log("CLICKED again and again");
-  };*/
-  /*if(text == ""){
-  modal8.style.display = "block";
-  console.log("CLICKED again and again");
-  };*/
+      if(text == "welcome to my digital world!"){
+            modal3.style.display = "block";
+            console.log("CLICKED again and again");
+      };
+      if(text == "here you go ram"){
+            modal4.style.display = "block";
+            console.log("CLICKED again and again");
+      };
+      /*if(text == "that’s a good idea sir!"){
+            modal5.style.display = "block";
+            console.log("CLICKED again and again");
+      };*/
+      /*if(text == "here are the [solution name] slides"){
+            modal6.style.display = "block";
+            console.log("CLICKED again and again");
+      };*/  
+      /*if(text == "here are the [solution name] slides"){
+            modal7.style.display = "block";
+            console.log("CLICKED again and again");
+      };*/
+      /*if(text == "here are the [solution name] slides"){
+            modal8.style.display = "block";
+            console.log("CLICKED again and again");
+      };*/
 }
 
 //ALL CODE FROM HERE ON IS NOT TO BE EDITED AS IT IS WHAT CONNECTS US TO API.AI
@@ -283,7 +283,7 @@ function prepareResponse(val) {
   };
 
   //POWERPOINT
-  if (text.indexOf(subString3) != -1 || text.indexOf(subString4) != -1 || text.indexOf(subString5)) {
+  if (text.indexOf(subString3) != -1 || text.indexOf(subString4) != -1 || text.indexOf(subString5) != -1) {
     console.log("powerpoint found");
     showPpt.call(this,text);
     //check = true;
