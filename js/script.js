@@ -6,9 +6,9 @@ var accessToken = "071ec91a234c452a90d9ef56f872eb0c",
       recognition,
       //Listening reveal
       messageRecording = "<div class='listening'><span>Listening</span><img src='images/wave.gif'></div>",
-      messageCouldntHear = "I couldn't hear you, could you say that again sir?",
+      messageCouldntHear = "Do I really have to?",
       messageInternalError = "Oh no, there has been an internal server error",
-      messageSorry = "I'm sorry, I don't have the answer to that yet sir.";
+      messageSorry = "You really make me work";
 var modal;
 var modalImg;
 var captionText;
