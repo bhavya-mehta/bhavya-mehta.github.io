@@ -15,7 +15,7 @@ var captionText;
 var modal2;
 var modalVid;
 var modal3, modal4;
-//var modal5, modal6, modal7, modal8;
+var modal5, modal6, modal7, modal8;
 var msg;
 var check = false;
 
@@ -26,10 +26,10 @@ $(document).ready(function() {
       modal2 = document.getElementById('myModal2');
       modal3 = document.getElementById('myModal3');
       modal4 = document.getElementById('myModal4');
-      //modal5 = document.getElementById('myModal5');
-      //modal6 = document.getElementById('myModal6');
-      //modal7 = document.getElementById('myModal7');
-      //modal8 = document.getElementById('myModal8');  
+      modal5 = document.getElementById('myModal5');
+      modal6 = document.getElementById('myModal6');
+      modal7 = document.getElementById('myModal7');
+      modal8 = document.getElementById('myModal8');  
       modalImg = document.getElementById("img01"); /** getting id of the modal Image **/
       modalVid = document.getElementById("vid01"); /** getting id of the modal Video **/
       captionText = document.getElementById("caption"); /** to display the caption inside the modal **/
@@ -95,10 +95,10 @@ window.onkeydown = function() {
             modal2.style.display = "none";
             modal3.style.display = "none";
             modal4.style.display = "none";
-            //modal5.style.display = "none";
-            //modal6.style.display = "none";
-            //modal7.style.display = "none";
-            //modal8.style.display = "none";
+            modal5.style.display = "none";
+            modal6.style.display = "none";
+            modal7.style.display = "none";
+            modal8.style.display = "none";
       }
       if (keyCode == 33) {
             document.getElementById('vid01').pause();
@@ -146,22 +146,22 @@ function showPpt(text) {
             modal4.style.display = "block";
             console.log("CLICKED again and again");
       };
-      /*if(text == "that’s a good idea sir!"){
+      if(text == "that’s a good idea sir!"){
             modal5.style.display = "block";
             console.log("CLICKED again and again");
-      };*/
-      /*if(text == "here are the [solution name] slides"){
+      };
+      if(text == "here are the [solution name] slides"){
             modal6.style.display = "block";
             console.log("CLICKED again and again");
-      };*/  
-      /*if(text == "here are the [solution name] slides"){
+      }; 
+      if(text == "here are the [solution name] slides"){
             modal7.style.display = "block";
             console.log("CLICKED again and again");
-      };*/
-      /*if(text == "here are the [solution name] slides"){
+      };
+      if(text == "here are the [solution name] slides"){
             modal8.style.display = "block";
             console.log("CLICKED again and again");
-      };*/
+      };
 }
 
 //ALL CODE FROM HERE ON IS NOT TO BE EDITED AS IT IS WHAT CONNECTS US TO API.AI
