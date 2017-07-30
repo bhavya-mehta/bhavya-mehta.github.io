@@ -253,7 +253,7 @@ function prepareResponse(val) {
   var subString2 = "loading";
   var subString3 = "here";
   var subString4 = "welcome";
-  var subString5 = "that's";
+  var subString5 = "that";
 
   var text = spokenResponse.toLowerCase();
   console.log(" TEXT TO CHECK : " +text);
