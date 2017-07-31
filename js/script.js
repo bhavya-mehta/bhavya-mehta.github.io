@@ -167,156 +167,156 @@ function showPpt(text) {
 //ALL CODE FROM HERE ON IS NOT TO BE EDITED AS IT IS WHAT CONNECTS US TO API.AI
 function startRecognition() {
 
-  recognition = new webkitSpeechRecognition();
-  recognition.continuous = false;
-  recognition.interimResults = false;
-  recognition.onstart = function(event) {
-    respond(messageRecording);
-    updateRec();
-  };
-  recognition.onresult = function(event) {
-    recognition.onend = null;
+      recognition = new webkitSpeechRecognition();
+      recognition.continuous = false;
+      recognition.interimResults = false;
+      recognition.onstart = function(event) {
+            respond(messageRecording);
+            updateRec();
+      };
+      recognition.onresult = function(event) {
+            recognition.onend = null;
 
-    var text = "";
-    for (var i = event.resultIndex; i < event.results.length; ++i) {
-    text += event.results[i][0].transcript;
-    }
-    setInput(text);          
-    stopRecognition();
-  };
-  recognition.onend = function() {
-    respond(messageCouldntHear);
-    stopRecognition();
-  };
-  recognition.lang = "en-US";
-  recognition.start();
+            var text = "";
+            for (var i = event.resultIndex; i < event.results.length; ++i) {
+            text += event.results[i][0].transcript;
+            }
+            setInput(text);          
+            stopRecognition();
+      };
+      recognition.onend = function() {
+            respond(messageCouldntHear);
+            stopRecognition();
+      };
+      recognition.lang = "en-US";
+      recognition.start();
 }
 
 
 function stopRecognition() {
-    if (recognition) {
-      recognition.stop();
-      recognition = null;
-    };
-    updateRec();
+      if (recognition) {
+            recognition.stop();
+            recognition = null;
+      };
+      updateRec();
 };
 
 function switchRecognition() {
-  if (recognition) {
-    stopRecognition();
-  } else {
-    startRecognition();
-  };
+      if (recognition) {
+            stopRecognition();
+      } else {
+            startRecognition();
+      };
 }
 
 function setInput(text) {
-  $speechInput.val(text);
-  send();
+      $speechInput.val(text);
+      send();
 }
 
 function updateRec() {
-  //$recBtn.text(recognition ? "Stop" : "Speak");
-  if (recognition) {
-    $recBtn.addClass("btn-sonar");
-  } else {
-    $recBtn.removeClass("btn-sonar");
-  };
+      //$recBtn.text(recognition ? "Stop" : "Speak");
+      if (recognition) {
+            $recBtn.addClass("btn-sonar");
+      } else {
+            $recBtn.removeClass("btn-sonar");
+      };
 }
 
 function send() {
-  var text = $speechInput.val();
-  $.ajax({
-    type: "POST",
-    url: baseUrl + "query",
-    contentType: "application/json; charset=utf-8",
-    dataType: "json",
-    headers: {
-    "Authorization": "Bearer " + accessToken
-    },
-    data: JSON.stringify({query: text, lang: "en", sessionId: "yaydevdiner"}),
-      success: function(data) {
-      prepareResponse(data);
-    },
-    error: function() {
-    respond(messageInternalError);
-    }
-  });
+      var text = $speechInput.val();
+      $.ajax({
+            type: "POST",
+            url: baseUrl + "query",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            headers: {
+                  "Authorization": "Bearer " + accessToken
+            },
+            data: JSON.stringify({query: text, lang: "en", sessionId: "yaydevdiner"}),
+                  success: function(data) {
+                  prepareResponse(data);
+            },
+            error: function() {
+                  respond(messageInternalError);
+            }
+      });
 }
 
 function prepareResponse(val) {
-  var debugJSON = JSON.stringify(val, undefined, 2),
-  spokenResponse = val.result.speech;
-  console.log("SPOKEN RESPONSE IS : " + spokenResponse);
-  console.log("SPOKEN RESPONSE IS : " + val.result.speech);
+      var debugJSON = JSON.stringify(val, undefined, 2),
+      spokenResponse = val.result.speech;
+      console.log("SPOKEN RESPONSE IS : " + spokenResponse);
+      console.log("SPOKEN RESPONSE IS : " + val.result.speech);
 
-  var subString1 = "displaying";
-  var subString2 = "loading";
-  var subString3 = "here";
-  var subString4 = "welcome";
-  var subString5 = "that";
+      var subString1 = "displaying";
+      var subString2 = "loading";
+      var subString3 = "here";
+      var subString4 = "welcome";
+      var subString5 = "that";
 
-  var text = spokenResponse.toLowerCase();
-  console.log(" TEXT TO CHECK : " +text);
+      var text = spokenResponse.toLowerCase();
+      console.log(" TEXT TO CHECK : " +text);
 
-  //IMAGE  
-  if (text.indexOf(subString1) != -1) {
-    console.log("display found ");
-    findImageURL.call(this,text);
-    check = true;
-    console.log(check);
-  } else {
-    console.log("display not found ");
-    check = false;
-    console.log(check);
-  };
+      //IMAGE  
+      if (text.indexOf(subString1) != -1) {
+            console.log("display found ");
+            findImageURL.call(this,text);
+            check = true;
+            console.log(check);
+      } else {
+            console.log("display not found ");
+            check = false;
+            console.log(check);
+      };
 
-  //VIDEO
-  if (text.indexOf(subString2) != -1) {
-    console.log("video found");
-    findVideoURL.call(this,text);
-    check = true;
-    console.log(check);
-  } else {
-    console.log("video not found ");
-    check = false;
-    console.log(check);
-  };
+      //VIDEO
+      if (text.indexOf(subString2) != -1) {
+            console.log("video found");
+            findVideoURL.call(this,text);
+            check = true;
+            console.log(check);
+      } else {
+            console.log("video not found ");
+            check = false;
+            console.log(check);
+      };
 
-  //POWERPOINT
-  if (text.indexOf(subString3) != -1 || text.indexOf(subString4) != -1 || text.indexOf(subString5) != -1) {
-    console.log("powerpoint found");
-    showPpt.call(this,text);
-    //check = true;
-    //console.log(check);
-  } else {
-    console.log("ppt not found ");
-    //check = false;
-    //console.log(check);
-  };
+      //POWERPOINT
+      if (text.indexOf(subString3) != -1 || text.indexOf(subString4) != -1 || text.indexOf(subString5) != -1) {
+            console.log("powerpoint found");
+            showPpt.call(this,text);
+            //check = true;
+            //console.log(check);
+      } else {
+            console.log("ppt not found ");
+            //check = false;
+            //console.log(check);
+      };
 
-  respond(spokenResponse);
-  debugRespond(debugJSON);
+      respond(spokenResponse);
+      debugRespond(debugJSON);
 } /// accha hoga sorry
 
 function debugRespond(val) {
-  $("#response").text(val); 
+      $("#response").text(val); 
 }
 
 function respond(val) {
-  if (val == "") {
-    val = messageSorry;
-  }
-  if (val !== messageRecording) {
-    console.log(check);
-    if(check === true){
-          msg.text = "Here you go sir"
-    };
-    if(check === false){
-          msg.text = val;
-    };
-    //msg.text = val;
-    window.speechSynthesis.speak(msg);
-    check = false;
-  };
-  $("#spokenResponse").addClass("is-active").find(".spoken-response__text").html(val);
+      if (val == "") {
+            val = messageSorry;
+      }
+      if (val !== messageRecording) {
+            console.log(check);
+            if(check === true){
+                  msg.text = "Here you go sir"
+            };
+            if(check === false){
+                  msg.text = val;
+            };
+            //msg.text = val;
+            window.speechSynthesis.speak(msg);
+            check = false;
+      };
+      $("#spokenResponse").addClass("is-active").find(".spoken-response__text").html(val);
 }
