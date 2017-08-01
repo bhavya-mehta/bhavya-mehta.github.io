@@ -207,6 +207,13 @@ function switchRecognition() {
       } else {
             startRecognition();
       };
+      var listeningCheck = document.querySelector(".listening").style.display
+      if(listeningCheck = "none") {
+            listeningCheck = "block";
+      };
+      if(listeningCheck = "block") {
+            listeningCheck = "none";
+      }
 }
 
 function setInput(text) {
