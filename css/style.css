@@ -106,7 +106,7 @@ input:active, input:focus {
   -webkit-transition: all 0.35s ease-in;
   transition: all 0.35s ease-in;
 }
-.spoken-response__text {background-color: #000000; border: 2px solid #ffff00; color: #ffff00; padding: 1em; border-radius: 40px; -webkit-transition: all 0.35s ease-in;
+.spoken-response__text {background-color: #000000; border: 2px solid #D3D3D3; color: #D3D3D3; padding: 1em; border-radius: 40px; -webkit-transition: all 0.35s ease-in;
 transition: all 0.35s ease-in;}
 
 /*POWERPOINT STYLE*/
