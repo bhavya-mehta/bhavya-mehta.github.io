@@ -16,14 +16,15 @@ body {
 /*CONTAINER STYLE*/
 .container {
   position: fixed;
-  top: 35%;
+  top: 50%;
   left: 50%;
+    width: 60vw;
   -webkit-transform: translate(-50%, -50%);
 }
 
 /*INPUT STYLE*/
 input {
-  background-color: #D3D3D3;
+  background-color: #000000;
   border: 0;
   color: #000000;
   font-family: "Titillium Web";
@@ -37,8 +38,8 @@ input:active, input:focus {
   outline: 1px solid #48788B;
 }
 .input-block{
-  background: #D3D3D3;
-  border:1px solid #D3D3D3;
+  background: #000000;
+  border:1px solid #000000;
   height: 70px;
   border-radius: 40px;
   width: 600px;
@@ -50,7 +51,8 @@ input:active, input:focus {
 }
 .input-block #speech{float: left; height: 60px; margin: 5px 10px; display: block;} 
 .input-block #speech:focus, .input-block #speech:active{border:none; outline: none;}
-.input-block #rec{float: right; margin: 4px; font-weight: 700; display: inline-block; outline: none; position: relative;}
+
+#rec{float: right; margin-right: 47vw; margin-top: 20vh; font-weight: 700; display: inline-block; outline: none; position: relative; z-index: 10;}
 
 /*BUTTON STYLE*/
 .btn {
@@ -58,7 +60,7 @@ input:active, input:focus {
   border: 0px solid #ffff00;
   color: #000000;
   cursor: pointer;
-  display: inline-block;
+  display: block;
   font-family: "Titillium Web";
   font-size: 20px;
   line-height: 43px;
@@ -66,8 +68,8 @@ input:active, input:focus {
   text-align: center;
   text-transform: uppercase;
   -webkit-transition: all 0.35s ease-in;
-  width: 60px;
-  height: 60px;
+  width: 6vw;
+  height: 6vw;
   border-radius: 50%;
 }
 .btn:hover {
@@ -76,15 +78,22 @@ input:active, input:focus {
 }
 .btn-sonar::before {
   content: '';
-  display: inline-block;
+  display: block;
   position: absolute;
-  width: 100%;
-  height: 100%;
+  width: 6vw;
+  height: 6vw;
   border-radius: 50%;
   top: 0;
   left: 0;
   -webkit-animation: sonar-effect 1s ease-in-out .1s infinite;
   animation: sonar-effect 1s ease-in-out .1s infinite;  
+}
+
+/*RECORDING IMAGE STYLE*/
+#rec img{
+    margin: 12px 0 0 0;
+    width: 2.5vw;
+    height: calc(2.5vw/0.6);
 }
 
 /*RESPONSE STYLE*/
@@ -106,7 +115,7 @@ input:active, input:focus {
   -webkit-transition: all 0.35s ease-in;
   transition: all 0.35s ease-in;
 }
-.spoken-response__text {background-color: #000000; border: 2px solid #D3D3D3; color: #D3D3D3; padding: 1em; border-radius: 40px; -webkit-transition: all 0.35s ease-in;
+.spoken-response__text {background-color: #000000; border: 2px solid #000000; color: #D3D3D3; padding: 1em; border-radius: 40px; -webkit-transition: all 0.35s ease-in;
 transition: all 0.35s ease-in;}
 
 /*POWERPOINT STYLE*/
@@ -126,9 +135,6 @@ iframe {
   height: 100%;
   padding-top: 100px;
 }
-
-/*RECORDING IMAGE STYLE*/
-#rec img{margin:12px 0 0 0;}
 
 /*H2 STYLE*/
 h2{color: #FFFFFF; font-weight: 400; text-align: center; font-size:42px;}
@@ -166,9 +172,9 @@ h2{color: #FFFFFF; font-weight: 400; text-align: center; font-size:42px;}
 }
 
 /*LISTENING STYLE*/
-.listening{overflow:hidden; padding-left: 1em; padding-right: 1em}
-.listening span{color:#D3D3D3; font-size: 20px; margin:0 40px 0 0; float: left;}
-.listening img{float: left; width: 300px; height: auto; padding: 0;}
+.listening{overflow:hidden; padding-left: 1em; padding-right: 1em; width: 700px}
+.listening span{color:#D3D3D3; font-size: 20px; margin:0 40px 0 0; float: left; padding-top: 1.9em;}
+.listening img{float: left; width: 400px; height: 100px; padding: 0;}
 
 /*BRANDING STYLE*/
 .branding{position: fixed; bottom: 0; right: 0;}
