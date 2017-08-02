@@ -52,7 +52,7 @@ input:active, input:focus {
 .input-block #speech{float: left; height: 60px; margin: 5px 10px; display: block;} 
 .input-block #speech:focus, .input-block #speech:active{border:none; outline: none;}
 
-#rec{float: right; margin-right: 47vw; margin-top: 20vh; font-weight: 700; display: inline-block; outline: none; position: relative; z-index: 10;}
+#rec{float: left; margin-right: 5vw; margin-top: 5vh; font-weight: 700; display: inline-block; outline: none; position: relative; z-index: 10;}
 
 /*BUTTON STYLE*/
 .btn {
