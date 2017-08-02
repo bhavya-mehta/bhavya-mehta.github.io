@@ -69,7 +69,7 @@ input:active, input:focus {
   text-transform: uppercase;
   -webkit-transition: all 0.35s ease-in;
   width: 3.6vw;
-  height: 4.5vw;
+  height: 3.6vw;
   border-radius: 50%;
 }
 .btn:hover {
@@ -81,7 +81,7 @@ input:active, input:focus {
   display: block;
   position: absolute;
   width: 3.6vw;
-  height: 4.5vw;
+  height: 3.6vw;
   border-radius: 50%;
   top: 0;
   left: 0;
