@@ -16,7 +16,7 @@ body {
 /*CONTAINER STYLE*/
 .container {
   position: fixed;
-  top: 50%;
+  top: 35%;
   left: 50%;
     width: 60vw;
   -webkit-transform: translate(-50%, -50%);
